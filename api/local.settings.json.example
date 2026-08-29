@@ -1,0 +1,27 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+
+    "BLOB_CONNECTION_STRING": "<azure-blob-connection-string>",
+    "BLOB_CONTAINER": "proposals",
+
+    "DOCINTEL_ENDPOINT": "https://<your-docintel>.cognitiveservices.azure.com/",
+    "DOCINTEL_KEY": "<document-intelligence-key>",
+
+    "AZURE_OPENAI_ENDPOINT": "https://<your-openai>.openai.azure.com/",
+    "AZURE_OPENAI_KEY": "<azure-openai-key>",
+    "AZURE_OPENAI_DEPLOYMENT": "gpt-5.4-mini",
+    "AZURE_OPENAI_API_VERSION": "2025-04-01-preview",
+
+    "LOCAL_LLM_BASE_URL": "https://<local-llm-host>/v1",
+    "LOCAL_LLM_API_KEY": "<bearer-token>",
+    "LOCAL_LLM_MODEL": "gemma4:31b",
+
+    "SQL_CONNECTION_STRING": "Driver={ODBC Driver 18 for SQL Server};Server=tcp:<server>.database.windows.net,1433;Database=proposal_evaluator;Encrypt=yes;TrustServerCertificate=no;Authentication=ActiveDirectoryMsi"
+  },
+  "Host": {
+    "CORS": "*"
+  }
+}

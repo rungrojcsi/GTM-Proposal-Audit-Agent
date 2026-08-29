@@ -1,0 +1,19 @@
+# ล็อกเวอร์ชันตายตัว (2026-08-16) — deploy ซ้ำต้องได้ระบบเดิมเป๊ะ
+#
+# ทำไมต้องล็อก: remote build (oryx) ติดตั้งใหม่ทุกครั้งที่ deploy ถ้าไม่ระบุเวอร์ชัน
+# จะได้ตัวใหม่สุดเสมอ -> deploy 2 ครั้งด้วยโค้ดเดียวกันอาจได้คนละระบบ ไล่บั๊กไม่ได้
+# ของจริงที่เกิดแล้ว: `openai>=1.40.0` ดึง openai 3.x มาให้ (ข้ามเมเจอร์ 2 ขั้น)
+# โดยที่โค้ดไม่ได้แก้อะไรเลย — deploy ผ่านแต่จะพังตอนเรียกใช้เท่านั้น
+#
+# ชุดนี้คือชุดที่รันอยู่จริงบน proposal-func และ **พิสูจน์แล้วว่าประเมินสำเร็จ**
+# (3 ครั้งหลัง deploy 2026-08-15 12:51 UTC ได้คะแนน 5.96/7.77 ครบถ้วน)
+#
+# วิธีอัปเกรด: แก้เลขที่นี่ทีละตัว -> deploy -> ทดสอบ upload จริง 1 ไฟล์ให้จบเป็น
+# Evaluated ก่อน แล้วค่อย commit  (อย่าปลดล็อกกลับเป็น >= เพื่อความสะดวก)
+azure-functions==1.25.0
+azure-storage-blob==12.30.0
+azure-ai-formrecognizer==3.3.3    # Document Intelligence (text extract + OCR) — F06/F07
+openai==3.1.0                     # Azure OpenAI / OpenAI-compatible client — F09
+pyodbc==5.3.0                     # Azure SQL — F04/F10/F11
+python-pptx==1.0.2                # PPTX text extract fallback — F06
+pydantic==2.13.4                  # schema validation for LLM JSON — F10

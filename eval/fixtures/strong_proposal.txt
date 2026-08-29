@@ -1,0 +1,64 @@
+[Slide 1] ACME Motors — Your Trusted Manufacturing DX Partner
+Proposal for Smart Factory Integration Program
+
+[Slide 2] Agenda
+1. Where you are today  2. What inaction costs  3. How we deliver  4. Our commitment
+45-minute session, 3-act flow.
+
+[Slide 3] Your Context
+ACME Motors operates 3 plants in Rayong producing automotive components for Japanese OEMs.
+Current MES is 12 years old; line data is captured manually on paper and re-keyed into Excel.
+
+[Slide 4] The Pain — In Your Operators' Words
+- "We find out about a line stoppage only at the end-of-shift meeting."
+- "Quality rejects are counted by hand; we cannot trace a defect back to a machine."
+- "Month-end OEE reporting takes 3 people 4 days."
+- "When Toyota audits us, we scramble for two weeks to assemble traceability records."
+
+[Slide 5] The Cost of Inaction
+Every month of delay: ~THB 2.1M in unrecovered scrap, 4 days of manual reporting effort,
+and rising audit risk ahead of the Toyota supplier re-certification in Q2 next year.
+
+[Slide 6] Why ACME Trusts Us — Track Record
+14 smart-factory integrations for Tier-1 automotive suppliers in Thailand and Vietnam since 2016,
+including 4 plants supplying Acme and Honda. Average OEE uplift 11 points within 9 months.
+
+[Slide 7] Solution Architecture (Executive View)
+Shop-floor IoT gateway -> Real-time MES -> Analytics layer -> OEE & traceability dashboards.
+Six integrated modules, no rip-and-replace of your ERP.
+
+[Slide 8] Delivery Narrative — 3 Waves
+Wave 1 Plant Ready (network + gateways) -> Wave 2 System Ready (MES + integration)
+-> Wave 3 People Ready (operator training + adoption).
+
+[Slide 9] Master Schedule
+18-month Gantt, two layers: our delivery milestones overlaid on YOUR milestones
+(Toyota re-cert Q2, annual shutdown in October, budget cycle in December).
+
+[Slide 10] Commercial Summary & TCO
+License THB 8.4M | Implementation THB 12.1M | Year 1 MA THB 2.2M.
+5-year TCO THB 31.5M with line-item breakdown per module (see appendix).
+
+[Slide 11] Why Us vs Alternatives
+Dimension-by-dimension: automotive track record, client-anchored schedule, Thai on-site team,
+5-year MA commitment, Japanese-OEM audit experience. Compared against 2 named alternatives.
+
+[Slide 12] The Ask & Next 30 Days
+We ask for a 6-week paid discovery to lock scope. Kickoff within 2 weeks of signature;
+joint steering committee established in week 1.
+
+[Slide 13] Named Team
+Program Director: Carlos P. | Solution Architect: Lan N. | MES Lead: Preecha K.
+Integration Lead: Minh T. | QA Lead: Waraporn S. | On-site Plant Coordinator: Anucha R.
+
+[Slide 14] Governance
+Joint steering committee, bi-weekly cadence, escalation matrix, RACI per workstream.
+
+[Slide 15] Quality Management & Risk Register
+Dedicated QM section: entry/exit criteria per wave, defect SLA, top-10 risk register with mitigation.
+
+[Slide 16] Post Go-Live Support (MA)
+5-year managed service: 24x5 support, quarterly health checks, continuous OEE tuning.
+
+[Slide 17] Reference Case
+Tier-1 brake-component supplier to Acme, Chonburi: OEE +13 points, audit prep cut from 2 weeks to 2 days.

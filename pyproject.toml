@@ -1,0 +1,4 @@
+[tool.pytest.ini_options]
+# จำกัดเฉพาะ unit tests — eval/test_*.py เป็นสคริปต์ตรวจกับข้อมูลจริง (ต้องมี dump จาก DB)
+# ไม่ใช่ pytest; ถ้าปล่อยให้ pytest เก็บไปด้วยจะล้มด้วย SystemExit ตอน collection
+testpaths = ["api/tests"]

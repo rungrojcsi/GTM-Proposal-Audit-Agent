@@ -1,0 +1,13 @@
+
+# playwright + ผลทดสอบ e2e (ไฟล์ชั่วคราว ไม่ต้องขึ้น git)
+.preview.log
+e2e-modal-focus.png
+e2e-users-panel.png
+e2e-owner-search.png
+e2e-playbook.png
+e2e-playbook-noaccess.png
+e2e-playbook-settings.png
+e2e-tabs-sort.png
+e2e-tabs-sort-dark.png
+mockup-tabs-light.png
+mockup-tabs-dark.png

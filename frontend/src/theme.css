@@ -1,0 +1,200 @@
+/* Design tokens — จาก "Proposal Evaluator UI Kit" (Claude Design)
+   สลับ brand ได้ที่ :root block เดียว */
+:root {
+  --bg: #eef1f6; --desk: #d9dee7;
+  --surface: #ffffff; --surface-2: #f6f8fb;
+  --border: #e5e8ee; --border-strong: #d5dae4;
+  --text: #0f172a; --text-2: #475569; --text-3: #93a1b5;
+  --primary: #1d4ed8; --primary-hover: #1e40af; --primary-soft: #eef3ff;
+  --accent: #0ea371; --accent-soft: #e6f7f0;
+  --sidebar-bg: linear-gradient(180deg, #0a1b3d, #0c1f42 60%, #0a1a38);
+  --sidebar-text: #c3ccdd; --sidebar-active: #193963;
+  --green: #16a34a; --amber: #d97706; --orange: #ea580c; --red: #dc2626;
+  --green-soft: #e7f6ec; --amber-soft: #fdf1e0; --orange-soft: #fdece2; --red-soft: #fceaea;
+  --shadow: 0 1px 2px rgba(16,24,40,.05), 0 10px 30px rgba(16,24,40,.08);
+}
+[data-theme="dark"] {
+  --bg: #0c1626; --desk: #060b14;
+  --surface: #121f33; --surface-2: #0e1a2b;
+  --border: #243550; --border-strong: #2e4162;
+  --text: #e8edf6; --text-2: #9fb0cc; --text-3: #68789a;
+  --primary: #5b8dff; --primary-hover: #7aa4ff; --primary-soft: #182a4a;
+  --accent: #25c896; --accent-soft: #103226;
+  --sidebar-bg: linear-gradient(180deg, #060f22, #0a1730 60%, #060f22);
+  --sidebar-text: #aebbd2; --sidebar-active: #1c3763;
+  --green: #34d399; --amber: #fbbf24; --orange: #fb923c; --red: #f87171;
+  --green-soft: #0f2a1e; --amber-soft: #2b2210; --orange-soft: #2c1a0f; --red-soft: #2c1616;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 12px 34px rgba(0,0,0,.5);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; }
+#root {
+  font-family: 'Inter', 'IBM Plex Sans Thai', system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+}
+.mono, .num { font-family: 'Inter', sans-serif; }
+a { color: var(--primary); text-decoration: none; }
+input, button, textarea { font-family: inherit; }
+
+/* ---------- Shell ---------- */
+.shell { display: flex; min-height: 100vh; }
+.sidebar {
+  width: 256px; flex-shrink: 0; background: var(--sidebar-bg);
+  display: flex; flex-direction: column; padding: 20px 14px; position: sticky; top: 0; height: 100vh;
+}
+.brand { display: flex; align-items: center; gap: 11px; padding: 4px 8px 18px; }
+.brand-name { color: #fff; font-weight: 800; font-size: 18px; line-height: 1.05; letter-spacing: .5px; }
+.brand-sub { color: #fff; font-size: 11.5px; letter-spacing: .2px; }
+.btn-new {
+  display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 12px;
+  border-radius: 10px; background: var(--primary); color: #fff; border: none; cursor: pointer;
+  font-size: 14px; font-weight: 600; box-shadow: 0 6px 16px rgba(29,78,216,.4); margin-bottom: 12px;
+}
+.btn-new:hover { background: var(--primary-hover); }
+.nav { display: flex; flex-direction: column; gap: 3px; }
+.nav-item {
+  display: flex; align-items: center; gap: 11px; padding: 9px 11px; border-radius: 9px;
+  color: var(--sidebar-text); font-size: 14px; font-weight: 500; cursor: pointer; border: none;
+  background: transparent; text-align: left; width: 100%;
+}
+.nav-item:hover { background: rgba(255,255,255,.06); color: #fff; }
+.nav-item.active { background: var(--sidebar-active); color: #fff; font-weight: 600; }
+.sidebar-foot { margin-top: auto; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.08); }
+.avatar { width: 34px; height: 34px; border-radius: 50%; background: linear-gradient(135deg,#2f6bff,#12c48b); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 13px; }
+
+/* E01/E02 — ปุ่มแฮมเบอร์เกอร์ + ฉากหลังลิ้นชัก: ซ่อนบนเดสก์ท็อป เปิดใช้ที่ <= 860px */
+.hamburger { display: none; width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-2);
+  align-items: center; justify-content: center; cursor: pointer; }
+.scrim { display: none; position: fixed; inset: 0; background: rgba(10,20,40,.5); z-index: 55; }
+
+.main { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.topbar {
+  height: 60px; flex-shrink: 0; border-bottom: 1px solid var(--border); display: flex;
+  align-items: center; gap: 16px; padding: 0 24px; background: var(--surface); position: sticky; top: 0; z-index: 5;
+}
+.crumb { font-size: 14px; color: var(--text-2); font-weight: 500; }
+.crumb b { color: var(--text); font-weight: 600; }
+.crumb .sep { color: var(--text-3); margin: 0 6px; }
+.search { display: flex; align-items: center; gap: 8px; width: 280px; height: 38px; border: 1px solid var(--border-strong); border-radius: 10px; padding: 0 12px; background: var(--surface-2); color: var(--text-3); font-size: 13.5px; }
+.icon-btn { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--surface); display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--text-2); }
+.content { flex: 1; background: var(--bg); padding: 28px 32px; }
+
+/* ---------- Responsive grids (E03) ----------
+   เดิมใช้ inline style `gridTemplateColumns` ซึ่ง media query เอื้อมไม่ถึง
+   -> ย้ายมาเป็นคลาส เพื่อให้ยุบเป็นคอลัมน์เดียวบนจอเล็กได้จริง */
+.grid { display: grid; gap: 22px; }
+.grid-tight { gap: 14px; }
+.grid-2 { grid-template-columns: 1fr 1fr; }
+.grid-2w { grid-template-columns: 1fr 1.4fr; }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-price { grid-template-columns: 2fr 1fr 2fr 1fr; }
+.hero-row { display: flex; gap: 28px; }
+
+/* ---------- Cards / typography ---------- */
+.h-title { font-size: 22px; font-weight: 800; letter-spacing: -.01em; margin: 0 0 4px; }
+.h-sub { font-size: 14.5px; color: var(--text-2); margin-bottom: 22px; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow); }
+.card-pad { padding: 20px 22px; }
+
+/* ---------- Style primitives (H03) ----------
+   inline style ที่ซ้ำบ่อยที่สุดในโปรเจค ย้ายมาเป็นคลาสเพื่อแก้ธีมได้จากที่เดียว
+   และไม่สร้าง object ใหม่ทุกครั้งที่ render */
+.t2 { color: var(--text-2); }
+.t3 { color: var(--text-3); }
+.sec-title { font-size: 15px; font-weight: 700; }
+.sec-count { color: var(--text-3); font-weight: 500; font-size: 12.5px; }
+.btn-sm { padding: 5px 14px; font-size: 13px; }
+.state { color: var(--text-3); padding: 60px 0; text-align: center; }
+.clip { overflow: hidden; }
+
+/* ---------- Buttons ---------- */
+.btn { padding: 12px 20px; border-radius: 10px; border: none; background: var(--primary); color: #fff; font-size: 14.5px; font-weight: 700; cursor: pointer; box-shadow: 0 6px 16px rgba(29,78,216,.35); display: inline-flex; align-items: center; gap: 9px; }
+.btn:hover { background: var(--primary-hover); }
+.btn:disabled { opacity: .5; cursor: not-allowed; box-shadow: none; }
+.btn-ghost { padding: 10px 18px; border-radius: 9px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); font-size: 14px; font-weight: 600; cursor: pointer; }
+
+/* ---------- Dropzone ---------- */
+.dropzone { border: 2px dashed var(--border-strong); border-radius: 12px; background: var(--surface-2); padding: 38px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; transition: border-color .12s, background .12s; }
+.dropzone.dragover { border-color: var(--primary); background: var(--primary-soft); }
+.dz-icon { width: 56px; height: 56px; border-radius: 14px; background: var(--primary-soft); display: flex; align-items: center; justify-content: center; color: var(--primary); }
+.file-chip { display: flex; align-items: center; gap: 12px; border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px; background: var(--surface); }
+.file-badge { width: 36px; height: 36px; border-radius: 8px; background: var(--red-soft); color: var(--red); display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; }
+
+/* ---------- Pills / badges ---------- */
+.pill { padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+.pill-reused { background: #e0f0ff; color: #1d4ed8; }
+.pill-eval { background: var(--accent-soft); color: var(--accent); }
+.pill-detected { font-size: 10.5px; font-weight: 700; color: var(--accent); background: var(--accent-soft); padding: 1px 7px; border-radius: 999px; }
+.tier { padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 700; }
+.tier-Critical { background: var(--primary-soft); color: var(--primary); }
+.tier-Important { background: #f1f5f9; color: #475569; }
+.tier-Optional { background: var(--surface-2); color: var(--text-3); }
+[data-theme="dark"] .tier-Important { background: #1c2b45; color: #9fb0cc; }
+
+/* ---------- Tabs ---------- */
+/* Segmented control — เดิมเป็นขีดใต้บาง ผู้ใช้อ่านเหมือน "หัวข้อ" ไม่รู้ว่ากดได้
+   กล่องพื้น surface-2 ครอบทั้งชุด = บอกขอบเขตว่านี่คือชุดตัวเลือก
+   ตัวที่เลือก = การ์ดพื้น surface + ขอบ + เงา ยกลอยขึ้นมาจากพื้นกล่อง */
+.tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--surface-2); border: 1px solid var(--border); border-radius: 12px; margin-bottom: 22px; max-width: 100%; overflow-x: auto; }
+.tab { padding: 8px 14px; border: 1px solid transparent; border-radius: 9px; background: transparent; cursor: pointer; font-size: 13.5px; font-weight: 600; color: var(--text-2); white-space: nowrap; }
+.tab:hover:not(.active) { color: var(--text); background: var(--surface); }
+.tab.active { background: var(--surface); border-color: var(--border-strong); color: var(--primary); box-shadow: 0 1px 2px rgba(16,24,40,.06), 0 2px 8px rgba(16,24,40,.08); }
+.tab:focus-visible { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+/* ---------- Tables ---------- */
+.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+.tbl th { text-align: left; font-size: 12.5px; font-weight: 700; color: var(--text-2); text-transform: uppercase; letter-spacing: .04em; background: var(--surface-2); padding: 12px 16px; }
+.tbl td { padding: 13px 16px; border-top: 1px solid var(--border); color: var(--text); }
+.bar { height: 5px; border-radius: 3px; background: var(--surface-2); overflow: hidden; margin-top: 5px; }
+.bar > i { display: block; height: 100%; border-radius: 3px; }
+
+/* ---------- Modal ---------- */
+.overlay { position: fixed; inset: 0; background: rgba(10,20,40,.5); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px; }
+.modal { width: 520px; max-width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,.35); overflow: hidden; }
+.modal-head { padding: 22px 24px 16px; border-bottom: 1px solid var(--border); }
+.modal-body { padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; }
+.modal-foot { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
+.field-label { display: flex; align-items: center; gap: 6px; font-size: 12.5px; font-weight: 600; color: var(--text-2); margin-bottom: 6px; }
+.field { width: 100%; height: 40px; border: 1px solid var(--border-strong); border-radius: 9px; padding: 0 12px; font-size: 14px; background: var(--surface); color: var(--text); }
+.tile { flex: 1; background: var(--surface-2); border: 1px solid var(--border); border-radius: 9px; padding: 10px 12px; }
+.tile-k { font-size: 11.5px; color: var(--text-3); }
+.tile-v { font-size: 14.5px; font-weight: 700; }
+.note { display: flex; align-items: flex-start; gap: 9px; font-size: 12.5px; color: var(--text-2); background: var(--primary-soft); border-radius: 9px; padding: 10px 12px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  /* E02 — sidebar กลายเป็นลิ้นชัก (drawer) เลื่อนเข้าจากซ้าย แทนการซ่อนหายไปเฉย ๆ
+     (เดิม display:none ทำให้บนมือถือเปลี่ยนหน้า/กด New Evaluation/ออกจากระบบไม่ได้เลย) */
+  .sidebar {
+    position: fixed; top: 0; bottom: 0; left: 0; height: 100vh; z-index: 60;
+    transform: translateX(-100%); transition: transform .2s ease;
+    box-shadow: 0 0 40px rgba(0,0,0,.45);
+  }
+  .sidebar.open { transform: translateX(0); }
+  .hamburger { display: flex; }
+  .scrim.open { display: block; }   /* บนเดสก์ท็อป .scrim ยัง display:none แม้มีคลาส open */
+
+  /* breadcrumb ซ้ำกับหัวข้อหน้าที่อยู่ถัดลงมา -> ซ่อนเพื่อคืนที่ให้ช่องค้นหา */
+  .crumb { display: none; }
+  .search { width: auto; flex: 1; min-width: 0; }
+
+  .content { padding: 18px 16px; }
+
+  /* E03 — ยุบเป็นคอลัมน์เดียว/สองคอลัมน์ */
+  .grid-2, .grid-2w { grid-template-columns: 1fr; }
+  .grid-4, .grid-price { grid-template-columns: 1fr 1fr; }
+  .hero-row { flex-direction: column; align-items: stretch; }
+  .hero-gauge { border-left: none !important; padding-left: 0 !important; }
+
+  /* ตารางกว้างกว่าจอ: ให้เลื่อนแนวนอนได้ (เดิม card ตั้ง overflow:hidden แบบ inline
+     ทำให้คอลัมน์ท้าย ๆ ถูกตัดหายไปมองไม่เห็น) */
+  .card { overflow-x: auto !important; }
+  .tbl { min-width: 560px; }
+}
+
+@media (max-width: 520px) {
+  .grid-4, .grid-price { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,62 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.python_packages/
+
+# Azure Functions
+api/local.settings.json
+bin/
+obj/
+.func/
+
+# Node / frontend
+node_modules/
+frontend/dist/
+# สำเนา dist ที่ redeploy.sh เก็บไว้ก่อน build ใหม่ (คอมเมนต์ต้องอยู่บรรทัดแยก)
+frontend/dist.backup-*/
+frontend/.vite/
+
+# Env & secrets
+*.env
+.env.local
+local.settings.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+# Deploy artifacts (K01) — SWA CLI สร้างไฟล์ zip ทิ้งไว้ทุกครั้งที่ deploy
+*-app.zip
+frontend/*.zip
+
+# ผลวินิจฉัย Azure (ไม่มี secret แต่ไม่ควร commit)
+infra/.*-output.txt
+# log ของ redeploy.sh (tee ไว้อ่านตอน deploy ล้ม) — ชั่วคราว ไม่ใช่ของ repo
+infra/.deploy-*.txt
+
+# A/B test LLM — env มี secret, cache มีเนื้อหา proposal ลูกค้า
+infra/.abtest.env
+infra/.abtest-cache/
+infra/.abtest-runs.jsonl
+infra/.bench-runs.jsonl
+
+# เอกสารข้อเสนอลูกค้า/คู่แข่งฉบับจริง — ใช้ทดสอบในเครื่องเท่านั้น ห้ามขึ้น git
+# (เคยถูก stage ไว้ 7 ไฟล์ 61MB เมื่อ 2026-08 — ถอนออกก่อน commit ทัน)
+Test_Proposal/
+
+# รายงาน telemetry ฉบับ PDF (ไฟล์ละ 10-12MB) — เก็บใน OneDrive ไม่ใช่ git
+docs/*.pdf
+
+# ไฟล์ที่ผู้ใช้กดดาวน์โหลดจากแอป — เป็นข้อเสนอลูกค้าฉบับจริง ห้ามขึ้น git
+# (พบ PE-2026-00055-v3-TTAST-Procurement-PPS.v3.0.pdf 2.1MB ค้างอยู่ 2026-08-19)
+downloads/
+
+# สำเนาที่ OneDrive สร้างเมื่อแก้ไฟล์เดียวกันจาก 2 เครื่องพร้อมกัน
+# ห้าม commit — ต้องเทียบกับตัวจริงด้วยมือแล้วรวม/ลบ ไม่ใช่เก็บเข้า repo
+*-NP2211030RAD.*
+
+# สไลด์/เอกสารนำเสนอ — ไฟล์ใหญ่ เก็บใน SharePoint/OneDrive ไม่ใช่ git
+docs/*.pptx
