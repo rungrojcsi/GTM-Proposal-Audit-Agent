@@ -15,6 +15,8 @@ A web app that audits B2B proposal quality before it goes to the customer — en
 
 **The shift:** proposal quality moves from *reviewer-by-reviewer judgment* to a *shared, auditable standard* — Sales self-checks, COS governs.
 
+![Architecture — audit pipeline on Azure](docs/images/architecture.png)
+
 ## 1. Pain Points
 
 Problems in the proposal process before this tool existed:
